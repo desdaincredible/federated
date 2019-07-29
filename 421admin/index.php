@@ -1,6 +1,6 @@
 <?php
 $site = 'ntw';
-set_include_path('/home/ntwclaim/public_html/library');
+set_include_path('./../library');
 
 $page_id = (!empty($_GET['id'])) ? $_GET['id'] : 'admin_index';
 $page_id = preg_replace("/[^a-zA-Z0-9_]/", "", $page_id);
