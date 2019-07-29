@@ -1,0 +1,16 @@
+<div class="page_body">
+    <div class="side_bar">
+        {ADMIN_MENU}
+    </div>
+    <div class="content">
+        <p class="content_header">Claim Results</p>
+        <form name="change_date" method="POST" action="show_claims"><p style="text-align: right; padding-right: 10px">
+            <select name="month">{CURRENT_MONTH}</select><select name="day">{CURRENT_DAY}</select><select name="year">{CURRENT_YEAR}</select><input
+                id="show_claims" type="submit" value="Change Date" name="show_claims"></p></form>
+        <div class="plan_wrapper">
+            {CLAIM_HEADER}{CLAIM_INFO}
+
+        </div>
+    </div>
+    <div class="clearBoth"></div>
+</div>
