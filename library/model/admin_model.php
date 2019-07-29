@@ -133,10 +133,13 @@ class model
     function insertDealer($content, $site, $db)
     {
         $now = date('Y-m-d');
+//        print_r($content);
 
         foreach ($_POST as $k => $v) {
+//            print_r($k);
             $$k = $v;
         }
+//        die();
 
         $business_phone = str_replace(' ', '', $business_phone);
         $business_phone = str_replace('(', '', $business_phone);
@@ -145,7 +148,7 @@ class model
 
 
         /* Update the dealer info */
-        $sql = "INSERT INTO dealer_registration (business_name, business_address, business_city, business_state, business_zip, business_phone, business_fax, business_email, contact_first_name, contact_last_name, contact_title) VALUES ( :business_name, :business_address, :business_city, :business_state, :business_zip, :business_phone, :business_fax, :business_email, :contact_first_name, :contact_last_name, :contact_title )";
+        $sql = "INSERT INTO dealer_registration (business_name, business_address, business_city, business_state, business_zip, business_phone, business_fax, business_email, contact_first_name, contact_last_name, contact_title, site) VALUES ( :business_name, :business_address, :business_city, :business_state, :business_zip, :business_phone, :business_fax, :business_email, :contact_first_name, :contact_last_name, :contact_title, :site )";
 
         $db->query($sql);
         $db->bind(':business_name', $business_name, PDO::PARAM_STR);
@@ -163,6 +166,7 @@ class model
         $db->bind(':contact_first_name', $contact_first_name, PDO::PARAM_STR);
         $db->bind(':contact_last_name', $contact_last_name, PDO::PARAM_STR);
         $db->bind(':contact_title', $contact_title, PDO::PARAM_STR);
+        $db->bind(':site', $site, PDO::PARAM_STR);
 
         if ($db->execute()) {
             return 'success';

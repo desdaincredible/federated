@@ -22,7 +22,7 @@ if (!empty($valid_dealer)) {
     while (list($k, $v) = each($_POST)) {
         $content[strtoupper($k)] = $v;
     }
-
+//print_r($content);
     if (!empty($_POST['next_page'])) {
 
         $dealer_complete = $model->insertDealer($content, $site, $db);
