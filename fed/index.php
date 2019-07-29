@@ -1,8 +1,10 @@
 <?php
 $site = 'fed';
-set_include_path(get_include_path()
-    . PATH_SEPARATOR . str_replace($site, '', $_SERVER['DOCUMENT_ROOT']) . 'library'
-);
+//set_include_path(get_include_path()
+//    . PATH_SEPARATOR . str_replace($site, '', $_SERVER['DOCUMENT_ROOT']) . 'library'
+//);
+
+set_include_path("." . PATH_SEPARATOR . '../library');
 
 $page_id = (!empty($_GET['id'])) ? $_GET['id'] : 'main_index';
 
