@@ -69,7 +69,7 @@ class Database
             return $this->stmt;
 
         } else {
-            $error_file = '/home/ntwclaim/public_html/db_error.log';
+            $error_file = ROOT . '../db_error.log';
             $error = date("Y-m-d H:i:s") . ' ' . $this->error . "\n";
             /*Write the contents to the file,
             using the FILE_APPEND flag to append the content to the end of the file
