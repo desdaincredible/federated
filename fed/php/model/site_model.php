@@ -678,5 +678,14 @@ class model
 
     }
 
+    function getClaimById($db, $id)
+    {
+        $sql = "select * from labor_claims lc where lc.claim_id=:claim_id and lc.dealer_id=:dealer_id";
+        $db->query($sql);
 
+        $db->bind(':claim_id', $id, PDO::PARAM_INT);
+        $db->bind(':filename', $_SESSION['dealer_id'], PDO::PARAM_STR);
+        $content = $db->single();
+        return $content;
+    }
 }
