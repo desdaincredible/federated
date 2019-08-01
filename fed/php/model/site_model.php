@@ -719,4 +719,13 @@ class model
         $id = $db->lastInsertId();
         return $id;
     }
+
+    function getAllClaims($db)
+    {
+        $sql = "SELECT * FROM labor_claims where dealer_id=:dealer_id ORDER BY claim_id desc";
+        $db->query($sql);
+        $db->bind(':dealer_id', $_SESSION['dealer_id'], PDO::PARAM_STR);
+        $claims = $db->resultset();
+        return $claims;
+    }
 }

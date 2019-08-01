@@ -36,6 +36,24 @@ if (!empty($valid_claim)) {
     $content['PAGE_TITLE'] = '<p class="content_header">Claims History</p>';
 }
 $content['MESSAGE'] = $message;
+$claims = $model->getAllClaims($db);
+if (count($claims) > 0) {
+    $tbody = '';
+    foreach ($claims as $claim) {
+        $tr = "<tr>";
+        $tr .= "<td><a href='./claim_by_id?claim_id=" . $claim['claim_id'] . "'>" . $claim['claim_id'] . "</a></td>";
+        $tr .= '<td>' . $claim['invoice_number'] . '</td >';
+        $tr .= '<td>' . $claim['original_repair_date'] . '</td >';
+        $tr .= '<td>' . $claim['customer_first_name'] . '</td >';
+        $tr .= '<td>' . $claim['customer_last_name'] . '</td >';
+        $tr .= '</tr>';
+        $tbody .= $tr;
+    }
+//    print_r($tbody);
+    $content['TBODY'] = $tbody;
+} else {
+    $content['TBODY'] = 'No claims found . ';
+}
 
 $footer = file_get_contents('templates/footer.html');
 $finished_page = $header . $body_copy . $footer;
