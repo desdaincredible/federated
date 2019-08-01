@@ -40,7 +40,26 @@ $content['MESSAGE'] = $message;
 if (isset($_GET['claim_id'])) {
     $claim = $model->getClaimById($db, $_GET['claim_id']);
     if ($claim) {
-        $content['BODY'] = 'Found';
+        $body = '<h3>Showing Claim Details For Id: ' . $claim['claim_id'] . '</h3>';
+        $body .= "<div>Original Invoice Number: " . $claim['invoice_number'] . "</div>";
+        $body .= "<div>Original Repair Date: " . $claim['original_repair_date'] . "</div>";
+        $body .= "<div>Sub Repair Date: " . $claim['sub_repair_date'] . "</div>";
+        $body .= "<div>Original Repair Mileage Reading: " . $claim['original_repair_mileage'] . "</div>";
+        $body .= "<div>Current Mileage Reading: " . $claim['current_mileage'] . "</div>";
+        $body .= "<div>Customer First Name: " . $claim['customer_first_name'] . "</div>";
+        $body .= "<div>Customer Last Name: " . $claim['customer_last_name'] . "</div>";
+        $body .= "<div>Customer Phone: " . $claim['customer_phone'] . "</div>";
+        $body .= "<div>Customer Email: " . $claim['customer_email'] . "</div>";
+        $body .= "<div>Vehicle Year: " . $claim['vehicle_year'] . "</div>";
+        $body .= "<div>Vehicle Make: " . $claim['make_name'] . "</div>";
+        $body .= "<div>Vehicle Model: " . $claim['vehicle_model'] . "</div>";
+        $body .= "<div>Repair Code:: " . $claim['repair_code'] . "," . $claim['repair_type'] . "," . $claim['component'] . "</div>";
+        $body .= "<div>Original Labor Price: " . $claim['original_labor_price'] . "</div>";
+        $body .= "<div>Labor Per Hour: " . $claim['labor_price'] . "</div>";
+        $body .= "<div>Original Labor Hours: " . $claim['labor_hour'] . "</div>";
+        $body .= "<div>Sub Labor Price: " . $claim['sub_labor_price'] . "</div>";
+        $body .= "<div>Repair Description: " . $claim['repair_description'] . "</div>";
+        $content['BODY'] = $body;
     } else {
         $content['BODY'] = 'No Claim found for this Id.';
     }

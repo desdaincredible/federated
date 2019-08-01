@@ -680,12 +680,43 @@ class model
 
     function getClaimById($db, $id)
     {
-        $sql = "select * from labor_claims lc where lc.claim_id=:claim_id and lc.dealer_id=:dealer_id";
+        $sql = "select * from labor_claims lc left join car_makes cm on (cm.car_make_id = lc.vehicle_make) left join repair_codes rc on (rc.repair_code = lc.repair_code) where lc.claim_id=:claim_id and lc.dealer_id=:dealer_id";
         $db->query($sql);
 
         $db->bind(':claim_id', $id, PDO::PARAM_INT);
-        $db->bind(':filename', $_SESSION['dealer_id'], PDO::PARAM_STR);
+        $db->bind(':dealer_id', $_SESSION['dealer_id'], PDO::PARAM_STR);
         $content = $db->single();
         return $content;
+    }
+
+    function saveAndGetId($db)
+    {
+        $sql = "INSERT INTO labor_claims (dealer_id,invoice_number,original_repair_date,sub_repair_date,original_repair_mileage,current_mileage,customer_first_name,customer_last_name,customer_phone,customer_email,vehicle_year,vehicle_make,vehicle_model,repair_code,original_labor_price,labor_price,labor_hour,sub_labor_price,repair_description ) 
+                                  VALUES (:dealer_id,:invoice_number,:original_repair_date,:sub_repair_date,:original_repair_mileage,:current_mileage,:customer_first_name,:customer_last_name,:customer_phone,:customer_email,:vehicle_year,:vehicle_make,:vehicle_model,:repair_code,:original_labor_price,:labor_price,:labor_hour,:sub_labor_price,:repair_description)";
+        $db->query($sql);
+        $db->bind(':dealer_id', $_SESSION['dealer_id'], PDO::PARAM_STR);
+        $db->bind(':invoice_number', $_POST['invoice_number'], PDO::PARAM_STR);
+        $db->bind(':original_repair_date', $_POST['original_repair_date'], PDO::PARAM_STR);
+        $db->bind(':sub_repair_date', $_POST['sub_repair_date'], PDO::PARAM_STR);
+        $db->bind(':original_repair_mileage', $_POST['original_repair_mileage'], PDO::PARAM_STR);
+        $db->bind(':current_mileage', $_POST['current_mileage'], PDO::PARAM_STR);
+        $db->bind(':customer_first_name', $_POST['customer_first_name'], PDO::PARAM_STR);
+        $db->bind(':customer_last_name', $_POST['customer_last_name'], PDO::PARAM_STR);
+        $db->bind(':customer_phone', $_POST['customer_phone'], PDO::PARAM_INT);
+        $db->bind(':customer_email', $_POST['customer_email'], PDO::PARAM_INT);
+
+        $db->bind(':vehicle_year', $_POST['vehicle_year'], PDO::PARAM_STR);
+        $db->bind(':vehicle_make', $_POST['vehicle_make'], PDO::PARAM_STR);
+        $db->bind(':vehicle_model', $_POST['vehicle_model'], PDO::PARAM_STR);
+        $db->bind(':repair_code', $_POST['repair_code'], PDO::PARAM_STR);
+        $db->bind(':original_labor_price', $_POST['original_labor_price'], PDO::PARAM_STR);
+        $db->bind(':labor_price', $_POST['labor_price'], PDO::PARAM_STR);
+        $db->bind(':labor_hour', $_POST['labor_hour'], PDO::PARAM_STR);
+        $db->bind(':sub_labor_price', $_POST['sub_labor_price'], PDO::PARAM_STR);
+        $db->bind(':repair_description', $_POST['repair_description'], PDO::PARAM_STR);
+        $db->execute();
+
+        $id = $db->lastInsertId();
+        return $id;
     }
 }

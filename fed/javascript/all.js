@@ -22,4 +22,6 @@ $(document).ready(function () {
         }
     );
 
+    $("#original_repair_date").datepicker({dateFormat: 'yy-mm-dd'});
+    $("#sub_repair_date").datepicker({dateFormat: 'yy-mm-dd'});
 });
