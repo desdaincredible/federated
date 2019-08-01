@@ -117,8 +117,8 @@ class model
         $sql = "SELECT * FROM dealer_registration WHERE business_phone=:business_phone AND business_zip=:business_zip";
 
         $db->query($sql);
-        $db->bind(':business_phone', $phone, PDO::PARAM_INT);
-        $db->bind(':business_zip', $_POST['dealer_zip'], PDO::PARAM_INT);
+        $db->bind(':business_phone', $phone, PDO::PARAM_STR);
+        $db->bind(':business_zip', $_POST['dealer_zip'], PDO::PARAM_STR);
         $row = $db->single();
         if (!empty($row['dealer_id'])) {
             if ($row['inactive'] > 0) {
