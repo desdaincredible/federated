@@ -9,6 +9,7 @@ $model = new model($db);
 
 $valid_claim = '';
 $show_form = '';
+$info_page = '';
 
 /* Check to see if they are already logged in */
 
