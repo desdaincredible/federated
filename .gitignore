@@ -1,5 +1,5 @@
 .idea
-invoices/*.*
+invoices/
 !invoices/.gitkeep
 php_errorlog
 db_error.log
