@@ -1286,6 +1286,10 @@ class model
                 return $get_claims;
             }
             case 'dealer_phone' : {
+                $value = str_replace(" ", '', $value);
+                $value = str_replace("(", '', $value);
+                $value = str_replace(")", '', $value);
+                $value = str_replace("-", '', $value);
                 $sql = 'SELECT dealer_claims.claim_id, dealer_claims.claim_date, dealer_claims.dealer_id from dealer_claims 
                             left join dealer_registration on (dealer_claims.dealer_id = dealer_registration.dealer_id) 
                             WHERE dealer_registration.business_phone = :business_phone';
@@ -1296,6 +1300,39 @@ class model
             }
             case 'claim_number' : {
                 $sql = "SELECT claim_id, claim_date, dealer_id from dealer_claims WHERE claim_id = :claim_id";
+                $db->query($sql);
+                $db->bind(':claim_id', $value, PDO::PARAM_STR);
+                $get_claims = $db->resultset();
+                return $get_claims;
+            }
+        }
+    }
+
+    function getClaimsLabor($db, $type, $value)
+    {
+        switch ($type) {
+            case 'date': {
+                $sql = "SELECT claim_id, original_repair_date, dealer_id from labor_claims WHERE original_repair_date = :original_repair_date";
+                $db->query($sql);
+                $db->bind(':original_repair_date', $value, PDO::PARAM_STR);
+                $get_claims = $db->resultset();
+                return $get_claims;
+            }
+            case 'dealer_phone' : {
+                $value = str_replace(" ", '', $value);
+                $value = str_replace("(", '', $value);
+                $value = str_replace(")", '', $value);
+                $value = str_replace("-", '', $value);
+                $sql = 'SELECT labor_claims.claim_id, labor_claims.original_repair_date, labor_claims.dealer_id from labor_claims 
+                            left join dealer_registration on (labor_claims.dealer_id = dealer_registration.dealer_id) 
+                            WHERE dealer_registration.business_phone = :business_phone';
+                $db->query($sql);
+                $db->bind(':business_phone', $value, PDO::PARAM_STR);
+                $get_claims = $db->resultset();
+                return $get_claims;
+            }
+            case 'claim_number' : {
+                $sql = "SELECT claim_id, original_repair_date, dealer_id from labor_claims WHERE claim_id = :claim_id";
                 $db->query($sql);
                 $db->bind(':claim_id', $value, PDO::PARAM_STR);
                 $get_claims = $db->resultset();
