@@ -106,7 +106,7 @@ if (!empty($valid_dealer)) {
     $default_claim_header = '<div class="claim_id"><a href="show_claims?order=claim_id&amp;direction=DESC&amp;cdate=' . $claim_date . '"><b>Claim Id</b></a></div>';
     $default_claim_date = '<div class="claim_date"><a href="show_claims?order=claim_date&amp;direction=DESC&amp;cdate=' . $claim_date . '"><b>Claim Date</b></a></div>';
     $default_claim_dealer = '<div class="dealer_id"><a href="show_claims?order=dealer_id&amp;direction=DESC&amp;cdate=' . $claim_date . '"><b>Dealer Id</b></a></div>';
-
+    $default_claim_amount = '';
 
     if ($direction == 'DESC') {
         $new_direction = 'ASC';
