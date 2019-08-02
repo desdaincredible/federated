@@ -691,6 +691,7 @@ class model
 
     function saveAndGetId($db)
     {
+
         $sql = "INSERT INTO labor_claims (dealer_id,invoice_number,original_repair_date,sub_repair_date,original_repair_mileage,current_mileage,customer_first_name,customer_last_name,customer_phone,customer_email,vehicle_year,vehicle_make,vehicle_model,repair_code,original_labor_price,labor_price,labor_hour,sub_labor_price,repair_description ) 
                                   VALUES (:dealer_id,:invoice_number,:original_repair_date,:sub_repair_date,:original_repair_mileage,:current_mileage,:customer_first_name,:customer_last_name,:customer_phone,:customer_email,:vehicle_year,:vehicle_make,:vehicle_model,:repair_code,:original_labor_price,:labor_price,:labor_hour,:sub_labor_price,:repair_description)";
         $db->query($sql);
@@ -717,6 +718,19 @@ class model
         $db->execute();
 
         $id = $db->lastInsertId();
+
+        $files = $_FILES;
+        $origInvFileName = $files['orig_inv_filename']['name'];
+        $origInvFileNameExt = pathinfo($origInvFileName, PATHINFO_EXTENSION);
+        $origInvFileNameSaveLocation = "invoices/" . $_POST['original_repair_date'] . "_labor_" . $id . "." . $origInvFileNameExt;
+        move_uploaded_file($files['orig_inv_filename']['tmp_name'], $origInvFileNameSaveLocation);
+
+        $claimInvFileName = $files['claim_inv_filename']['name'];
+        $claimInvFileNameExt = pathinfo($claimInvFileName, PATHINFO_EXTENSION);
+        $claimInvFileNameSaveLocation = "invoices/" . $_POST['original_repair_date'] . "_labor_" . $id . "." . $claimInvFileNameExt;
+        move_uploaded_file($files['claim_inv_filename']['tmp_name'], $claimInvFileNameSaveLocation);
+        // now the file uploads
+
         return $id;
     }
 
