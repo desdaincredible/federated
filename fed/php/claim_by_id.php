@@ -89,46 +89,56 @@ if (isset($_GET['claim_id'])) {
             <p>If there is a problem, please call x-xxx-xxx-xxxx</p>';
 
         }
+        
+        $body .= "<div class='claim-confirm'>";
 
-        $body .= '<h3>Claim Id: ' . $claim['claim_id'] . '</h3>';
+        $body .= '<h2>Claim Id: ' . $claim['claim_id'] . '</h2>';
 
-        $body .= "<div class='claim-label'>Original Invoice Number: </div><div class='claim-value'>" . $claim['invoice_number'] . "</div>";
+        $body .= "<div class='claim-field'><div class='claim-label'>Original Invoice Number: </div><div class='claim-value'>" . $claim['invoice_number'] . "</div></div>";
 
-        $body .= "<div class='claim-label'>Original Repair Date: </div><div class='claim-value'>" . $claim['original_repair_date'] . "</div>";
+        $body .= "<div class='claim-field'><div class='claim-label'>Original Repair Date: </div><div class='claim-value'>" . $claim['original_repair_date'] . "</div></div>";
 
-        $body .= "<div class='claim-label'>Sub Invoice Number: </div><div class='claim-value'>" . $claim['sub_invoice_number'] . "</div>";
+        $body .= "<div class='claim-field'><div class='claim-label'>Sub Invoice Number: </div><div class='claim-value'>" . $claim['sub_invoice_number'] . "</div></div>";
 
-        $body .= "<div class='claim-label'>Sub Repair Date: </div><div class='claim-value'>" . $claim['sub_repair_date'] . "</div>";
+        $body .= "<div class='claim-field'><div class='claim-label'>Sub Repair Date: </div><div class='claim-value'>" . $claim['sub_repair_date'] . "</div></div>";
 
-        $body .= "<div class='claim-label'>Original Repair Mileage Reading: </div><div class='claim-value'>" . $claim['original_repair_mileage'] . "</div>";
+        $body .= "<div class='claim-field'><div class='claim-label'>Original Repair Mileage Reading: </div><div class='claim-value'>" . $claim['original_repair_mileage'] . "</div></div>";
 
-        $body .= "<div class='claim-label'>Current Mileage Reading: </div><div class='claim-value'>" . $claim['current_mileage'] . "</div>";
+        $body .= "<div class='claim-field'><div class='claim-label'>Current Mileage Reading: </div><div class='claim-value'>" . $claim['current_mileage'] . "</div></div>";
+        
+        $body .= "<h3>Customer Information</h3>";
 
-        $body .= "<div class='claim-label'>Customer First Name: </div><div class='claim-value'>" . $claim['customer_first_name'] . "</div>";
+        $body .= "<div class='claim-field'><div class='claim-label'>Customer First Name: </div><div class='claim-value'>" . $claim['customer_first_name'] . "</div></div>";
 
-        $body .= "<div class='claim-label'>Customer Last Name: </div><div class='claim-value'>" . $claim['customer_last_name'] . "</div>";
+        $body .= "<div class='claim-field'><div class='claim-label'>Customer Last Name: </div><div class='claim-value'>" . $claim['customer_last_name'] . "</div></div>";
 
-        $body .= "<div class='claim-label'>Customer Phone: </div><div class='claim-value'>" . $claim['customer_phone'] . "</div>";
+        $body .= "<div class='claim-field'><div class='claim-label'>Customer Phone: </div><div class='claim-value'>" . $claim['customer_phone'] . "</div></div>";
 
-        $body .= "<div class='claim-label'>Customer Email: </div><div class='claim-value'>" . $claim['customer_email'] . "</div>";
+        $body .= "<div class='claim-field'><div class='claim-label'>Customer Email: </div><div class='claim-value'>" . $claim['customer_email'] . "</div></div>";
+        
+        $body .= "<h3>Vehicle Information</h3>";
 
-        $body .= "<div class='claim-label'>Vehicle Year: </div><div class='claim-value'>" . $claim['vehicle_year'] . "</div>";
+        $body .= "<div class='claim-field'><div class='claim-label'>Vehicle Year: </div><div class='claim-value'>" . $claim['vehicle_year'] . "</div></div>";
 
-        $body .= "<div class='claim-label'>Vehicle Make: </div><div class='claim-value'>" . $claim['make_name'] . "</div>";
+        $body .= "<div class='claim-field'><div class='claim-label'>Vehicle Make: </div><div class='claim-value'>" . $claim['make_name'] . "</div></div>";
 
-        $body .= "<div class='claim-label'>Vehicle Model: </div><div class='claim-value'>" . $claim['vehicle_model'] . "</div>";
+        $body .= "<div class='claim-field'><div class='claim-label'>Vehicle Model: </div><div class='claim-value'>" . $claim['vehicle_model'] . "</div></div>";
+        
+        $body .= "<h3>Repair Information</h3>";
 
-        $body .= "<div class='claim-label'>Repair Code:: </div><div class='claim-value'>" . $claim['repair_code'] . "," . $claim['repair_type'] . "," . $claim['component'] . "</div>";
+        $body .= "<div class='claim-field'><div class='claim-label'>Repair Code:: </div><div class='claim-value'>" . $claim['repair_code'] . "," . $claim['repair_type'] . "," . $claim['component'] . "</div></div>";
 
-        $body .= "<div class='claim-label'>Original Labor Price: </div><div class='claim-value'>" . $claim['original_labor_price'] . "</div>";
+        $body .= "<div class='claim-field'><div class='claim-label'>Original Labor Price: </div><div class='claim-value'>" . $claim['original_labor_price'] . "</div></div>";
 
-        $body .= "<div class='claim-label'>Labor Per Hour: </div><div class='claim-value'>" . $claim['labor_price'] . "</div>";
+        $body .= "<div class='claim-field'><div class='claim-label'>Labor Per Hour: </div><div class='claim-value'>" . $claim['labor_price'] . "</div></div>";
 
-        $body .= "<div class='claim-label'>Original Labor Hours: </div><div class='claim-value'>" . $claim['labor_hour'] . "</div>";
+        $body .= "<div class='claim-field'><div class='claim-label'>Original Labor Hours: </div><div class='claim-value'>" . $claim['labor_hour'] . "</div></div>";
 
-        $body .= "<div class='claim-label'>Sub Labor Price: </div><div class='claim-value'>" . $claim['sub_labor_price'] . "</div>";
+        $body .= "<div class='claim-field'><div class='claim-label'>Sub Labor Price: </div><div class='claim-value'>" . $claim['sub_labor_price'] . "</div></div>";
 
-        $body .= "<div class='claim-label'>Repair Description: </div><div class='claim-value'>" . $claim['repair_description'] . "</div>";
+        $body .= "<div class='claim-field'><div class='claim-label'>Repair Description: </div><div class='claim-value'>" . $claim['repair_description'] . "</div></div>";
+        
+        $body .= "</div>";
 
         $content['BODY'] = $body;
 
