@@ -216,7 +216,7 @@ table {
 
 .page_body {
     width: 1170px;
-    margin: 0px auto;
+    margin: 40px auto;
     background-color: #ffffff;
 }
 
@@ -241,9 +241,35 @@ table {
 }
 
 .content_header {
+	font-size: 20px;
     font-weight: bold;
     text-align: center;
 }
+
+/* Claim Success */
+.content_header + p {
+    text-align: center;
+}
+
+.claim-field {
+    display: block;
+}
+
+.claim-label, .claim-value {
+    display: inline-block;
+}
+
+.claim-label {
+    font-weight: bold;
+    margin: 2px 10px 2px 0;
+}
+
+.claim-confirm {
+    display: block;
+    width: fit-content;
+    margin: 30px auto 0;
+}
+/* END Claim Success */
 
 .content ul li {
     font-weight: bold;
