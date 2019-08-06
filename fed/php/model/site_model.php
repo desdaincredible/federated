@@ -698,8 +698,8 @@ class model
     function saveAndGetId($db)
     {
 
-        $sql = "INSERT INTO labor_claims (dealer_id,invoice_number,original_repair_date,sub_invoice_number,sub_repair_date,original_repair_mileage,current_mileage,customer_first_name,customer_last_name,customer_phone,customer_email,vehicle_year,vehicle_make,vehicle_model,repair_code,original_labor_price,labor_price,labor_hour,sub_labor_price,repair_description ) 
-                                  VALUES (:dealer_id,:invoice_number,:original_repair_date,:sub_invoice_number,:sub_repair_date,:original_repair_mileage,:current_mileage,:customer_first_name,:customer_last_name,:customer_phone,:customer_email,:vehicle_year,:vehicle_make,:vehicle_model,:repair_code,:original_labor_price,:labor_price,:labor_hour,:sub_labor_price,:repair_description)";
+        $sql = "INSERT INTO labor_claims (dealer_id,invoice_number,original_repair_date,sub_invoice_number,sub_repair_date,original_repair_mileage,current_mileage,customer_first_name,customer_last_name,customer_phone,customer_email,vehicle_year,vehicle_make,vehicle_model,repair_code,original_labor_price,labor_price,labor_hour,sub_labor_price,repair_description,created_at ) 
+                                  VALUES (:dealer_id,:invoice_number,:original_repair_date,:sub_invoice_number,:sub_repair_date,:original_repair_mileage,:current_mileage,:customer_first_name,:customer_last_name,:customer_phone,:customer_email,:vehicle_year,:vehicle_make,:vehicle_model,:repair_code,:original_labor_price,:labor_price,:labor_hour,:sub_labor_price,:repair_description,:created_at)";
         $db->query($sql);
         $db->bind(':dealer_id', $_SESSION['dealer_id'], PDO::PARAM_STR);
         $db->bind(':invoice_number', $_POST['invoice_number'], PDO::PARAM_STR);
@@ -722,6 +722,7 @@ class model
         $db->bind(':labor_hour', $_POST['labor_hour'], PDO::PARAM_STR);
         $db->bind(':sub_labor_price', $_POST['sub_labor_price'], PDO::PARAM_STR);
         $db->bind(':repair_description', $_POST['repair_description'], PDO::PARAM_STR);
+        $db->bind(':created_at',date('Y-m-d'), PDO::PARAM_STR);
         $db->execute();
 
         $id = $db->lastInsertId();
