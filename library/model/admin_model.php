@@ -1312,9 +1312,9 @@ class model
     {
         switch ($type) {
             case 'date': {
-                $sql = "SELECT claim_id, original_repair_date, dealer_id from labor_claims WHERE original_repair_date = :original_repair_date";
+                $sql = "SELECT claim_id, original_repair_date, dealer_id from labor_claims WHERE created_at = :created_at";
                 $db->query($sql);
-                $db->bind(':original_repair_date', $value, PDO::PARAM_STR);
+                $db->bind(':created_at', $value, PDO::PARAM_STR);
                 $get_claims = $db->resultset();
                 return $get_claims;
             }
