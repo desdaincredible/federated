@@ -1,6 +1,7 @@
 <?php
 $site = 'ntw';
-set_include_path(get_include_path() . PATH_SEPARATOR . 'library');
+define("ROOT", __DIR__ . "/");
+set_include_path(ROOT . 'library');
 
 $page_id = (!empty($_GET['id'])) ? $_GET['id'] : 'main_index';
 

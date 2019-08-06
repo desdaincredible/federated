@@ -24,4 +24,25 @@ $(document).ready(function () {
 
     $("#original_repair_date").datepicker({dateFormat: 'yy-mm-dd'});
     $("#sub_repair_date").datepicker({dateFormat: 'yy-mm-dd'});
+
+    $(function () {
+        $("#vehicle_model").autocomplete({
+            minLength: 2,
+            source: function (request, response) {
+                $.getJSON("/php/show_models.php", {
+                    "vmid": $("#vehicle_make").val(),
+                    "term": $("#vehicle_model").val()
+                }, function (data) {
+                    response(data);
+                });
+            },
+            select: function (event, ui) {
+                if (ui.item.value == 'No Suggestions Found') {
+                    ui.item.value = '';
+                }
+                $(this).val(ui.item.value);
+            }
+        });
+    });
+
 });
