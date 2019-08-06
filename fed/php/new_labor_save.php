@@ -26,7 +26,7 @@ if (!empty($valid_claim)) {
     // user logged in
     $id = $model->saveAndGetId($db);
     if ($id) {
-        header("Location: /fed/claim_by_id?claim_id=$id");
+        header("Location: /fed/claim_by_id?claim_id=$id&success");
 
 //        $email->setFrom('donotreply@ntwclaims.net', 'NTW Website');
 //        $email->addAddress('rasel20062007@gmail.com', 'NTW Claims');

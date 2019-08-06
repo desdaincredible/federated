@@ -24,7 +24,6 @@ if (!empty($_POST['dealer_zip']) && !empty($_POST['dealer_phone'])) {
 		<strong>Tread Car Dealer claims:</strong> 1-855-429-2790</p>';
     }
     $dealer_info = $model->getDealerInfo($db, $_SESSION['dealer_id']);
-    $info_page = file_get_contents('templates/shop_info.html');
 
     foreach ($dealer_info as $key => $value) {
         $info_page = str_replace('{' . strtoupper($key) . '}', $value, $info_page);

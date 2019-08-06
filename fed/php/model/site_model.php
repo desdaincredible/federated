@@ -698,12 +698,13 @@ class model
     function saveAndGetId($db)
     {
 
-        $sql = "INSERT INTO labor_claims (dealer_id,invoice_number,original_repair_date,sub_repair_date,original_repair_mileage,current_mileage,customer_first_name,customer_last_name,customer_phone,customer_email,vehicle_year,vehicle_make,vehicle_model,repair_code,original_labor_price,labor_price,labor_hour,sub_labor_price,repair_description ) 
-                                  VALUES (:dealer_id,:invoice_number,:original_repair_date,:sub_repair_date,:original_repair_mileage,:current_mileage,:customer_first_name,:customer_last_name,:customer_phone,:customer_email,:vehicle_year,:vehicle_make,:vehicle_model,:repair_code,:original_labor_price,:labor_price,:labor_hour,:sub_labor_price,:repair_description)";
+        $sql = "INSERT INTO labor_claims (dealer_id,invoice_number,original_repair_date,sub_invoice_number,sub_repair_date,original_repair_mileage,current_mileage,customer_first_name,customer_last_name,customer_phone,customer_email,vehicle_year,vehicle_make,vehicle_model,repair_code,original_labor_price,labor_price,labor_hour,sub_labor_price,repair_description ) 
+                                  VALUES (:dealer_id,:invoice_number,:original_repair_date,:sub_invoice_number,:sub_repair_date,:original_repair_mileage,:current_mileage,:customer_first_name,:customer_last_name,:customer_phone,:customer_email,:vehicle_year,:vehicle_make,:vehicle_model,:repair_code,:original_labor_price,:labor_price,:labor_hour,:sub_labor_price,:repair_description)";
         $db->query($sql);
         $db->bind(':dealer_id', $_SESSION['dealer_id'], PDO::PARAM_STR);
         $db->bind(':invoice_number', $_POST['invoice_number'], PDO::PARAM_STR);
         $db->bind(':original_repair_date', $_POST['original_repair_date'], PDO::PARAM_STR);
+        $db->bind(':sub_invoice_number', $_POST['sub_invoice_number'], PDO::PARAM_STR);
         $db->bind(':sub_repair_date', $_POST['sub_repair_date'], PDO::PARAM_STR);
         $db->bind(':original_repair_mileage', $_POST['original_repair_mileage'], PDO::PARAM_STR);
         $db->bind(':current_mileage', $_POST['current_mileage'], PDO::PARAM_STR);
