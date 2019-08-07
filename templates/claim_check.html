@@ -59,6 +59,9 @@
                         <div class="plan_field">{REMAINING_TREAD_DEPTH_1}/32</div>
                         <div class="plan_header">Tire Damage Description</div>
                         <div class="plan_field">{TIRE_DAMAGE_DESC_1}</div>
+                        <div class="plan_header">Coverage</div>
+                        <div class="plan_field">{TIRE_COVERAGE_1}</div>
+
                     </div>
                     <div style="display: {TIRE_2}">
                         <div class="plan_line"><p><b>Tire 2</b></p></div>
@@ -84,6 +87,8 @@
                         <div class="plan_field">{REMAINING_TREAD_DEPTH_2}/32</div>
                         <div class="plan_header">Tire Damage Description</div>
                         <div class="plan_field">{TIRE_DAMAGE_DESC_2}</div>
+                        <div class="plan_header">Coverage</div>
+                        <div class="plan_field">{TIRE_COVERAGE_2}</div>
                     </div>
 
 
@@ -182,6 +187,7 @@
                             <textarea id="tire_damage_desc_1" name="tire_damage_desc_1" rows="5" cols="28"
                                       tabindex="19">{TIRE_DAMAGE_DESC_1}</textarea>
                         </div>
+                        <input type="hidden" name="coverage_1" value="{TIRE_COVERAGE_1}">
                     </div>
                     <div class="plan_submit">
                         <input id="add_tire" type="button" value="Add A Second Tire" name="add_tire"><input
@@ -246,6 +252,7 @@
                             <textarea id="tire_damage_desc_2" name="tire_damage_desc_2" rows="5" cols="28"
                                       tabindex="30">{TIRE_DAMAGE_DESC_2}</textarea>
                         </div>
+                        <input type="hidden" name="coverage_2" value="{TIRE_COVERAGE_2}">
                     </div>
                 </div>
 

@@ -254,58 +254,61 @@ $(document).ready( function(){
 
 		}
 	});
-	
-	/* Calculate Credit */
+
+    /* Calculate Credit */
     $('.formcheck.tdepth_1').bind("keyup change", function (e) {
         var cost = +$("#original_tire_price_1").val();
         var original = +$("#original_tread_depth_1").val();
-		var replace = +$("#remaining_tread_depth_1").val();
-		var percent = ((replace - 2 ) / (original - 2)) * 100;
-		var total = (cost * percent) / 100;
-	    $('.formcheck.tdepth_1').each(function() {
-            if( original != '' && replace != '' && cost != '' && percent <= 75 && replace > 2 ) {
-             	// $('#percent_1').html(percent.toFixed(2) + '%');
-			    $('#coverage_1').html('$' + total.toFixed(2));
-	        }
-	        else if( original != '' && replace != '' && cost != '' && percent > 75 && replace > 2 ) {
-		        // $('#percent_1').html('100%');
-		        $('#coverage_1').html(cost.toFixed(2));
-	        }
-	        else if( original != '' && replace != '' && cost != '' && replace <= 2 ) {
-		        // $('#percent_1').html('N/A');
-		        $('#coverage_1').html('<strong>Tire is not eligible for coverage.</strong>');
-	        }
+        var replace = +$("#remaining_tread_depth_1").val();
+        var percent = ((replace - 2 ) / (original - 2)) * 100;
+        var total = (cost * percent) / 100;
+        if (original != '' && replace != '' && cost != '' && percent <= 75 && replace > 2) {
+            // $('#percent_1').html(percent.toFixed(2) + '%');
+            $('#coverage_1').html('$' + total.toFixed(2));
+            $('input[name="coverage_1"]').val(total.toFixed(2));
+        }
+        else if (original != '' && replace != '' && cost != '' && percent > 75 && replace > 2) {
+            // $('#percent_1').html('100%');
+            $('#coverage_1').html(cost.toFixed(2));
+            $('input[name="coverage_1"]').val(cost.toFixed(2));
+        }
+        else if (original != '' && replace != '' && cost != '' && replace <= 2) {
+            // $('#percent_1').html('N/A');
+            $('#coverage_1').html('<strong>Tire is not eligible for coverage.</strong>');
+        }
 
-	        else {
-	        	// $('#percent_1').html('');
-				$('#coverage_1').html("<span class='small-print'>Enter all values above to calculate</span>");
-	        }
-		})
-	});
-      
+        else {
+            // $('#percent_1').html('');
+            $('#coverage_1').html("<span class='small-print'>Enter all values above to calculate</span>");
+        }
+
+    });
+
     $('.formcheck.tdepth_2').bind("keyup change", function (e) {
-      var cost = +$("#original_tire_price_2").val();
-      var original = +$("#original_tread_depth_2").val();
-      var replace = +$("#remaining_tread_depth_2").val();
-		var percent = ((replace - 2 ) / (original - 2)) * 100;
-      var total = (cost * percent) / 100;
-	    $('.formcheck.tdepth_2').each(function() {
-            if( original != '' && replace != '' && cost != '' && percent <= 75 && replace > 2 ) {
-             	// $('#percent_2').html(percent.toFixed(2) + '%');
-			    $('#coverage_2').html('$' + total.toFixed(2)).toFixed(2);
-	        }
-	        else if( original != '' && replace != '' && cost != '' && percent > 75 && replace > 2 ) {
-		        // $('#percent_2').html('100%');
-		        $('#coverage_2').html(cost.toFixed(2)).toFixed(2);
-	        }
-	        else if( original != '' && replace != '' && cost != '' && replace <= 2 ) {
-		        // $('#percent_2').html('N/A');
-		        $('#coverage_2').html('<strong>Tire is not eligible for coverage.</strong>');
-	        }
-	        else {
-	        	// $('#percent_2').html('');
-				$('#coverage_2').html("<span class='small-print'>Enter all values above to calculate</span>");
-	        }
-		})
-	});
+        var cost = +$("#original_tire_price_2").val();
+        var original = +$("#original_tread_depth_2").val();
+        var replace = +$("#remaining_tread_depth_2").val();
+        var percent = ((replace - 2 ) / (original - 2)) * 100;
+        var total = (cost * percent) / 100;
+        $('.formcheck.tdepth_2').each(function () {
+            if (original != '' && replace != '' && cost != '' && percent <= 75 && replace > 2) {
+                // $('#percent_2').html(percent.toFixed(2) + '%');
+                $('#coverage_2').html('$' + total.toFixed(2)).toFixed(2);
+                $('input[name="coverage_2"]').val(total.toFixed(2));
+            }
+            else if (original != '' && replace != '' && cost != '' && percent > 75 && replace > 2) {
+                // $('#percent_2').html('100%');
+                $('#coverage_2').html(cost.toFixed(2)).toFixed(2);
+                $('input[name="coverage_2"]').val(cost.toFixed(2));
+            }
+            else if (original != '' && replace != '' && cost != '' && replace <= 2) {
+                // $('#percent_2').html('N/A');
+                $('#coverage_2').html('<strong>Tire is not eligible for coverage.</strong>');
+            }
+            else {
+                // $('#percent_2').html('');
+                $('#coverage_2').html("<span class='small-print'>Enter all values above to calculate</span>");
+            }
+        })
+    });
 });
