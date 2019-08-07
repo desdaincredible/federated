@@ -250,6 +250,22 @@ $(document).ready(function () {
     $(function () {
         $("#invoice_date").datepicker();
     });
+    $(function () {
+        $("#sub_invoice_date").datepicker();
+    });
+
+    $(function () {
+        $("#sub_invoice_date").on('change', function () {
+            $('.diff_alert').addClass('hide');
+            const sub_invoice_date = $(this).val();
+            const invoice_date = $("#invoice_date").val();
+            const diff = moment(sub_invoice_date).diff(invoice_date, 'years');
+            console.log('diff', diff, diff == NaN);
+            if (diff > 3 || isNaN(diff)) {
+                $('.diff_alert').removeClass('hide');
+            }
+        });
+    });
 
     $(function () {
         $("#vehicle_model").autocomplete({
@@ -276,6 +292,22 @@ $(document).ready(function () {
 
     });
 
+
+    $(function () {
+        $("#submit_button").on('click', function (e) {
+            e.preventDefault();
+            // $('.diff_alert').addClass('hide');
+            const sub_invoice_date = $('#sub_invoice_date').val();
+            const invoice_date = $("#invoice_date").val();
+            const diff = moment(sub_invoice_date).diff(invoice_date, 'years');
+            // console.log('diff', diff, diff == NaN);
+            if (diff > 3 || isNaN(diff)) {
+                $('.diff_alert').removeClass('hide');
+            } else {
+                $('#new_claim').submit();
+            }
+        });
+    });
 
     $("#new_plan").submit(function () {
         if (checkFullForm() == 1) {

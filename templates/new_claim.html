@@ -10,7 +10,7 @@
             <p class="content_header">File a New Claim</p>
             <p class="content_header">Step 1: Enter Claim Info</p>
             <p>Attention: If you need to make a claim on more than two tires, please call 866-830-4189</p>
-            <form name="new_claim" action="new_claim_2" method="post">
+            <form id="new_claim" name="new_claim" action="new_claim_2" method="post">
 
                 <div class="plan_wrapper">
                     <div class="plan_header">Original Invoice Number:</div>
@@ -23,7 +23,7 @@
                     <div class="plan_field"><input type="text" id="sub_invoice_date" name="sub_invoice_date" size="30"
                                                    tabindex="2" autocomplete="off">
                         <!-- New alert div shown only if tire is not eligible -->                         
-	                     <div class="alert">
+	                     <div class="alert alert-danger diff_alert hide">
 	                     <strong>Tire is not eligible.</strong> The NTW RHP expires three (3) years from original retail sale.
 	                     </div>
 	                    <!-- END new alert div -->
@@ -58,7 +58,7 @@
                         <input class="formcheck" type='text' id="vehicle_model" name='vehicle_model' size='30'
                                tabindex="7">
                     </div>
-                    <div class="plan_submit"><input type="submit" value="Submit" name="send_message"></div>
+                    <div class="plan_submit"><input id="submit_button" type="submit" value="Submit" name="send_message"></div>
                     <div id="vehicle_make_id"></div>
 
                     <div class="clearBoth"></div>
