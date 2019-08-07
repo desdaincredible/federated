@@ -1176,6 +1176,19 @@ class model
 
     }
 
+    function getClaimLaborContent($claim_id, &$db, $demo = 0)
+    {
+
+        $sql = "SELECT * FROM labor_claims lc left join dealer_registration dr on (dr.dealer_id = lc.dealer_id) where lc.claim_id=:claim_id";
+
+        $db->query($sql);
+        $db->bind(':claim_id', $claim_id, PDO::PARAM_STR);
+        $claim_info = $db->resultset();
+
+        return $claim_info;
+
+    }
+
     function getMakeName($db, $id)
     {
         $sql = "SELECT make_name FROM car_makes WHERE car_make_id = $id";

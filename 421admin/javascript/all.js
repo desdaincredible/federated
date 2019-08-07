@@ -92,7 +92,7 @@ $(document).ready(function () {
                     res.forEach(c => {
                         const tr = $('<tr>');
                         // http://ntwclaims.net/421admin/admin_claims?cid=113
-                        const anchor = $('<a>').attr('href', './admin_claims?cid=' + c.claim_id).text(c.claim_id);
+                        const anchor = $('<a>').attr('href', './admin_claims_labor?cid=' + c.claim_id).text(c.claim_id);
                         tr.append($('<td>').html(anchor));
                         tr.append($('<td>').text(c.original_repair_date));
                         tr.append($('<td>').text(c.dealer_id));

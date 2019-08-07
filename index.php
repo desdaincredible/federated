@@ -1,7 +1,7 @@
 <?php
 $site = 'ntw';
 define("ROOT", __DIR__ . "/");
-set_include_path(ROOT . 'library');
+set_include_path(ROOT . './../library');
 
 $page_id = (!empty($_GET['id'])) ? $_GET['id'] : 'main_index';
 
@@ -14,7 +14,6 @@ if (in_array($page_id, $pages)) {
 } else {
     $page_id = 'main_index';
     $include_page = 'main_index.php';
-
 }
 
 require_once($include_page);
