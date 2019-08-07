@@ -16,6 +16,7 @@ $pages = array(
     'admin_claim_search_ajax',
     'admin_claim_labor_search_ajax',
     'show_claims_labor',
+    'admin_claims_labor'
 );
 
 if (in_array($page_id, $pages)) {
