@@ -24,8 +24,8 @@ if (!empty($valid_dealer)) {
         header("Location: error?eid=4");
     }
 
-    $claim_content = array_change_key_case($claim_content, CASE_UPPER);
-    $content = array_merge($claim_content, $content);
+//    $claim_content = array_change_key_case($claim_content, CASE_UPPER);
+//    $content = array_merge($claim_content, $content);
     $content['PAGE_TITLE'] = 'Labor Claim Success!';
     $content['DEALER_NAME'] = (empty($claim_content[0]['business_name'])) ? '' : $claim_content[0]['business_name'];
     $content['DEALER_PHONE'] = (empty($claim_content[0]['business_phone'])) ? '' : $claim_content[0]['business_phone'];
@@ -70,7 +70,7 @@ if (!empty($valid_dealer)) {
 $content['MESSAGE'] = $message;
 $footer = file_get_contents('templates/footer.html');
 $finished_page = $header . $body_copy . $footer;
-
+//print_r($content);
 foreach ($content as $key => $value) {
     $finished_page = str_replace('{' . strtoupper($key) . '}', $value, $finished_page);
 }
