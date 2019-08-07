@@ -13,7 +13,7 @@ $info_page = '';
 
 /* Check to see if they are already logged in */
 
-if ($_SESSION['valid_claim'] == 1) {
+if (isset($_SESSION['valid_claim']) && $_SESSION['valid_claim'] == 1) {
     $valid_claim = 1;
 }
 
