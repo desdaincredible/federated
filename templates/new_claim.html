@@ -18,6 +18,17 @@
                     <div class="plan_header">Original Purchase Date</div>
                     <div class="plan_field"><input type="text" id="invoice_date" name="invoice_date" size="30"
                                                    tabindex="2" autocomplete="off"></div>
+                    <!-- New field add -->
+                    <div class="plan_header">Subsequent/Replacement Purchase Date</div>
+                    <div class="plan_field"><input type="text" id="sub_invoice_date" name="sub_invoice_date" size="30"
+                                                   tabindex="2" autocomplete="off">
+                        <!-- New alert div shown only if tire is not eligible -->                         
+	                     <div class="alert">
+	                     <strong>Tire is not eligible.</strong> The NTW RHP expires three (3) years from original retail sale.
+	                     </div>
+	                    <!-- END new alert div -->
+                    </div>
+                    <!-- END New field add -->
                     <div class="plan_header">Original Mileage Reading</div>
                     <div class="plan_field"><input type="text" id="orig_mileage" name="orig_mileage" size="30"
                                                    tabindex="3"></div>
