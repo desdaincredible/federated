@@ -8,7 +8,7 @@ require_once('model/site_model.php');
 $model = new model($db);
 
 $valid_claim = '';
-$show_form = '';
+$show_form = 0;
 $info_page = '';
 
 /* Check to see if they are already logged in */
