@@ -77,6 +77,7 @@ if (!empty($valid_claim)) {
     $content['REMAINING_TREAD_DEPTH_1'] = (empty($claim_content[0]['remaining_tread_depth'])) ? '' : $claim_content[0]['remaining_tread_depth'];
     $content['TIRE_DAMAGE_DESC_1'] = (empty($claim_content[0]['damage_desc'])) ? '' : $claim_content[0]['damage_desc'];
     $content['COVERAGE_1'] = (empty($claim_content[0]['coverage'])) ? '' : $claim_content[0]['coverage'];
+    $content['PERCENTAGE_1'] = (empty($claim_content[0]['coverage_percentage'])) ? '' : $claim_content[0]['coverage_percentage'];
 
 
     $content['TIRE_MAKE_2'] = (empty($claim_content[1]['make'])) ? '' : ucwords(strtolower($claim_content[1]['make']));
@@ -93,6 +94,7 @@ if (!empty($valid_claim)) {
     $content['REMAINING_TREAD_DEPTH_2'] = (empty($claim_content[1]['remaining_tread_depth'])) ? '' : $claim_content[1]['remaining_tread_depth'];
     $content['TIRE_DAMAGE_DESC_2'] = (empty($claim_content[1]['damage_desc'])) ? '' : $claim_content[1]['damage_desc'];
     $content['COVERAGE_2'] = (empty($claim_content[1]['coverage'])) ? '' : $claim_content[1]['coverage'];
+    $content['PERCENTAGE_2'] = (empty($claim_content[1]['coverage_percentage'])) ? '' : $claim_content[1]['coverage_percentage'];
 
 
 } else {
@@ -139,27 +141,27 @@ if (!empty($valid_claim)) {
         $html_part = str_replace('{' . strtoupper($key) . '}', $value, $html_part);
     }
 
-    $email->setFrom('donotreply@ntwclaims.net', 'NTW Website');
-    $email->addAddress('claims@ntwclaims.net', 'NTW Claims');
-    $email->addCC('zola@zolaweb.com', 'Zola');
-    $email->addCC('dmcneese@abswarranty.net', 'Daniel McNeese');
-    $email->addCC('gpetty@abswarranty.net', 'Gennica Petty');
-
-
-    $email->Subject = 'New NTW claim';
-    $email->isHTML(TRUE);
-    $email->Body = $html_part;
-    $email->AltBody = $text_part;
-
-    $email->addAttachment($claim_content[0]['orig_inv_filename'], str_replace('invoices/', '', $claim_content[0]['orig_inv_filename']));
-    $email->addAttachment($claim_content[0]['claim_inv_filename'], str_replace('invoices/', '', $claim_content[0]['claim_inv_filename']));
-
-
-    /* Send the mail. */
-    if (!$email->send()) {
-        /* PHPMailer error. */
-        echo $email->ErrorInfo;
-    }
+//    $email->setFrom('donotreply@ntwclaims.net', 'NTW Website');
+//    $email->addAddress('claims@ntwclaims.net', 'NTW Claims');
+//    $email->addCC('zola@zolaweb.com', 'Zola');
+//    $email->addCC('dmcneese@abswarranty.net', 'Daniel McNeese');
+//    $email->addCC('gpetty@abswarranty.net', 'Gennica Petty');
+//
+//
+//    $email->Subject = 'New NTW claim';
+//    $email->isHTML(TRUE);
+//    $email->Body = $html_part;
+//    $email->AltBody = $text_part;
+//
+//    $email->addAttachment($claim_content[0]['orig_inv_filename'], str_replace('invoices/', '', $claim_content[0]['orig_inv_filename']));
+//    $email->addAttachment($claim_content[0]['claim_inv_filename'], str_replace('invoices/', '', $claim_content[0]['claim_inv_filename']));
+//
+//
+//    /* Send the mail. */
+//    if (!$email->send()) {
+//        /* PHPMailer error. */
+//        echo $email->ErrorInfo;
+//    }
 }
 $model->deleteSession($db);
 echo $finished_page;

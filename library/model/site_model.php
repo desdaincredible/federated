@@ -571,20 +571,20 @@ class model
 
         echo $claim_id;
 
-        $first_tire = $this->insertTire($db, $tires_table, $claim_id, $tire_make_1, $tire_model_1, $tire_size_1, $tire_dot_1, $original_part_number_1, $claim_part_number_1, $original_tire_price_1, $claim_tire_price_1, $original_tread_depth_1, $remaining_tread_depth_1, $tire_damage_desc_1, $tire_coverage_1);
+        $first_tire = $this->insertTire($db, $tires_table, $claim_id, $tire_make_1, $tire_model_1, $tire_size_1, $tire_dot_1, $original_part_number_1, $claim_part_number_1, $original_tire_price_1, $claim_tire_price_1, $original_tread_depth_1, $remaining_tread_depth_1, $tire_damage_desc_1, $tire_coverage_1, $tire_percentage_1);
         //echo "$tires_table, $claim_id, $tire_make_1, $tire_model_1, $tire_size_1, $tire_dot_1, $original_tire_price_1, $claim_tire_price_1, $original_tread_depth_1, $remaining_tread_depth_1, $tire_damage_desc_1";
         //exit;
         if (!empty($tire_make_2)) {
-            $second_tire = $this->insertTire($db, $tires_table, $claim_id, $tire_make_2, $tire_model_2, $tire_size_2, $tire_dot_2, $original_part_number_2, $claim_part_number_2, $original_tire_price_2, $claim_tire_price_2, $original_tread_depth_2, $remaining_tread_depth_2, $tire_damage_desc_2, $tire_coverage_2);
+            $second_tire = $this->insertTire($db, $tires_table, $claim_id, $tire_make_2, $tire_model_2, $tire_size_2, $tire_dot_2, $original_part_number_2, $claim_part_number_2, $original_tire_price_2, $claim_tire_price_2, $original_tread_depth_2, $remaining_tread_depth_2, $tire_damage_desc_2, $tire_coverage_2, $tire_percentage_2);
         }
 
         return $claim_id;
     }
 
-    function insertTire(&$db, $tires_table, $claim_id, $tire_make, $tire_model, $tire_size, $tire_dot, $original_part_number, $replace_part_number, $original_tire_price, $claim_tire_price, $original_tread_depth, $remaining_tread_depth, $tire_damage_desc, $coverage)
+    function insertTire(&$db, $tires_table, $claim_id, $tire_make, $tire_model, $tire_size, $tire_dot, $original_part_number, $replace_part_number, $original_tire_price, $claim_tire_price, $original_tread_depth, $remaining_tread_depth, $tire_damage_desc, $coverage, $coveragePercentage)
     {
 
-        $sql = "INSERT INTO $tires_table (claim_id ,make, model, size, DOT, original_part_number, claim_part_number, original_tire_price, claim_tire_price,  original_tread_depth, remaining_tread_depth, damage_desc, coverage) VALUES (:claim_id, :tire_make, :tire_model, :tire_size, :tire_dot, :original_part_number, :replace_part_number, :original_tire_price, :claim_tire_price, :original_tread_depth, :remaining_tread_depth, :tire_damage_desc, :coverage)";
+        $sql = "INSERT INTO $tires_table (claim_id ,make, model, size, DOT, original_part_number, claim_part_number, original_tire_price, claim_tire_price,  original_tread_depth, remaining_tread_depth, damage_desc, coverage, coverage_percentage) VALUES (:claim_id, :tire_make, :tire_model, :tire_size, :tire_dot, :original_part_number, :replace_part_number, :original_tire_price, :claim_tire_price, :original_tread_depth, :remaining_tread_depth, :tire_damage_desc, :coverage, :coverage_percentage)";
         //echo "INSERT INTO $tires_table (claim_id ,make, model, size, DOT, original_tread_depth, remaining_tread_depth, damage_desc) VALUES ($claim_id, $tire_make, $tire_model, $tire_size, $tire_dot, $original_tread_depth, $remaining_tread_depth, $tire_damage_desc)";
         $db->query($sql);
 
@@ -601,6 +601,7 @@ class model
         $db->bind(':remaining_tread_depth', $remaining_tread_depth, PDO::PARAM_INT);
         $db->bind(':tire_damage_desc', $tire_damage_desc, PDO::PARAM_STR);
         $db->bind(':coverage', $coverage, PDO::PARAM_STR);
+        $db->bind(':coverage_percentage', $coveragePercentage, PDO::PARAM_STR);
         $db->execute();
 
 
