@@ -259,7 +259,7 @@ $(document).ready(function () {
             $('.diff_alert').addClass('hide');
             const sub_invoice_date = $(this).val();
             const invoice_date = $("#invoice_date").val();
-            const diff = moment(sub_invoice_date).diff(invoice_date, 'years');
+            const diff = moment(sub_invoice_date).diff(invoice_date, 'years', true);
             console.log('diff', diff, diff == NaN);
             if (diff > 3 || isNaN(diff)) {
                 $('.diff_alert').removeClass('hide');
@@ -299,7 +299,7 @@ $(document).ready(function () {
             // $('.diff_alert').addClass('hide');
             const sub_invoice_date = $('#sub_invoice_date').val();
             const invoice_date = $("#invoice_date").val();
-            const diff = moment(sub_invoice_date).diff(invoice_date, 'years');
+            const diff = moment(sub_invoice_date).diff(invoice_date, 'years', true);
             // console.log('diff', diff, diff == NaN);
             if (diff > 3 || isNaN(diff)) {
                 $('.diff_alert').removeClass('hide');
