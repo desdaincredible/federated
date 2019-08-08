@@ -44,7 +44,7 @@ if (!empty($valid_claim)) {
     $claim_content = $model->getClaimContent($db, $_SESSION['claim_id'], $_SESSION['demo']);
     $content['PAGE_TITLE'] = 'Claim Success!';
 
-	$content['CLAIM_ID'] = (empty($claim_content[0]['claim_id'])) ? '' : $claim_content[0]['claim_id'];
+    $content['CLAIM_ID'] = (empty($claim_content[0]['claim_id'])) ? '' : $claim_content[0]['claim_id'];
     $content['DEALER_NAME'] = (empty($claim_content[0]['business_name'])) ? '' : $claim_content[0]['business_name'];
     $content['DEALER_PHONE'] = (empty($claim_content[0]['business_phone'])) ? '' : $claim_content[0]['business_phone'];
 
@@ -76,6 +76,7 @@ if (!empty($valid_claim)) {
     $content['ORIGINAL_TREAD_DEPTH_1'] = (empty($claim_content[0]['original_tread_depth'])) ? '' : $claim_content[0]['original_tread_depth'];
     $content['REMAINING_TREAD_DEPTH_1'] = (empty($claim_content[0]['remaining_tread_depth'])) ? '' : $claim_content[0]['remaining_tread_depth'];
     $content['TIRE_DAMAGE_DESC_1'] = (empty($claim_content[0]['damage_desc'])) ? '' : $claim_content[0]['damage_desc'];
+    $content['COVERAGE_1'] = (empty($claim_content[0]['coverage'])) ? '' : $claim_content[0]['coverage'];
 
 
     $content['TIRE_MAKE_2'] = (empty($claim_content[1]['make'])) ? '' : ucwords(strtolower($claim_content[1]['make']));
@@ -91,6 +92,7 @@ if (!empty($valid_claim)) {
     $content['ORIGINAL_TREAD_DEPTH_2'] = (empty($claim_content[1]['original_tread_depth'])) ? '' : $claim_content[1]['original_tread_depth'];
     $content['REMAINING_TREAD_DEPTH_2'] = (empty($claim_content[1]['remaining_tread_depth'])) ? '' : $claim_content[1]['remaining_tread_depth'];
     $content['TIRE_DAMAGE_DESC_2'] = (empty($claim_content[1]['damage_desc'])) ? '' : $claim_content[1]['damage_desc'];
+    $content['COVERAGE_2'] = (empty($claim_content[1]['coverage'])) ? '' : $claim_content[1]['coverage'];
 
 
 } else {
