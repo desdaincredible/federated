@@ -1,14 +1,13 @@
 <div class="page_body">
     <div class="side_bar">
-        <p style="text-align: center; padding: 10px;"><img src="images/iStock_000034792106Small.jpg"
-                                                           alt="damaged tire replacement plan"
-                                                           style="width:340px; height: 226px;">
+        <p style="text-align: center; padding: 10px;">
+	        <img src="images/iStock_000034792106Small.jpg" alt="damaged tire replacement plan" style="width:340px; height: 226px;">
         <p>
     </div>
     <div class="content">
         <div id="claim">
-            <p class="content_header">File a New Claim</p>
-            <p class="content_header">Step 1: Enter Claim Info</p>
+            <h1>File a New Claim</h1>
+            <h2>Step 1: Enter Claim Info</h2>
             <p>Attention: If you need to make a claim on more than two tires, please call 866-830-4189</p>
             <form id="new_claim" name="new_claim" action="new_claim_2" method="post">
 
@@ -18,17 +17,15 @@
                     <div class="plan_header">Original Purchase Date</div>
                     <div class="plan_field"><input type="text" id="invoice_date" name="invoice_date" size="30"
                                                    tabindex="2" autocomplete="off"></div>
-                    <!-- New field add -->
-                    <div class="plan_header">Subsequent/Replacement Purchase Date</div>
-                    <div class="plan_field"><input type="text" id="sub_invoice_date" name="sub_invoice_date" size="30"
-                                                   tabindex="2" autocomplete="off">
-                        <!-- New alert div shown only if tire is not eligible -->                         
+                    <div class="plan_header">Replacement Purchase Date</div>
+                    <div class="plan_field">
+	                    <input type="text" id="sub_invoice_date" name="sub_invoice_date" size="30" tabindex="2" autocomplete="off">
+                        <!-- Alert div shown only if tire is not eligible -->                         
 	                     <div class="alert alert-danger diff_alert hide">
-	                     <strong>Tire is not eligible.</strong> The NTW RHP expires three (3) years from original retail sale.
+	                     <strong>Purchase is not eligible.</strong> The NTW RHP expires three (3) years from original retail sale.
 	                     </div>
 	                    <!-- END new alert div -->
                     </div>
-                    <!-- END New field add -->
                     <div class="plan_header">Original Mileage Reading</div>
                     <div class="plan_field"><input type="text" id="orig_mileage" name="orig_mileage" size="30"
                                                    tabindex="3"></div>
@@ -38,7 +35,7 @@
                     <div class="plan_header">Person Filing Claim</div>
                     <div class="plan_field"><input type="text" id="claim_filer" name="claim_filer" size="30"
                                                    tabindex="4"></div>
-                    <div class="plan_submit"><p><b>Vehicle Information</b></p></div>
+                    <h4 class="sub-section">Vehicle Information</h4>
                     <div class="plan_header" id="car_year">Vehicle Year:</div>
                     <div class="plan_field">
                         <input class="formcheck" type="text" id="vehicle_year" name="vehicle_year" size="4"
