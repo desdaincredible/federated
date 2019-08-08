@@ -260,6 +260,7 @@ $(document).ready( function(){
         var cost = +$("#original_tire_price_1").val();
         var original = +$("#original_tread_depth_1").val();
         var replace = +$("#remaining_tread_depth_1").val();
+        console.log(cost, original, replace);
         var percent = (replace / original) * 100;
         var percent_after = (replace / (original - 2)) * 100;
         var total = (cost * percent_after) / 100;

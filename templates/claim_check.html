@@ -164,7 +164,8 @@
                         </div>
                         <div class="plan_header" id="t_price_1">Original Tire Price</div>
                         <div class="plan_field">
-                            <input id="original_tire_price_1" name="original_tire_price_1" size="30" type="text"
+                            <input class="formcheck tdepth_1" id="original_tire_price_1" name="original_tire_price_1"
+                                   size="30" type="text"
                                    tabindex="15" value="{ORIGINAL_TIRE_PRICE_1}">
                         </div>
                         <div class="plan_header" id="t_price_1">Replacement Tire Price</div>
@@ -174,12 +175,12 @@
                         </div>
                         <div class="plan_header" id="o_t_depth_1">Original Tread Depth</div>
                         <div class="plan_field">
-                            <input id="original_tread_depth_1" name="original_tread_depth_1" size="2" MAXLENGTH="2"
+                            <input id="original_tread_depth_1" class="formcheck tdepth_1" name="original_tread_depth_1" size="2" MAXLENGTH="2"
                                    type="text" tabindex="17" value="{ORIGINAL_TREAD_DEPTH_1}">/32
                         </div>
                         <div class="plan_header" id="r_t_depth_1">Remaining Tread Depth</div>
                         <div class="plan_field">
-                            <input id="remaining_tread_depth_1" name="remaining_tread_depth_1" size="2" MAXLENGTH="2"
+                            <input id="remaining_tread_depth_1" class="formcheck tdepth_1" name="remaining_tread_depth_1" size="2" MAXLENGTH="2"
                                    type="text" tabindex="18" value="{REMAINING_TREAD_DEPTH_1}">/32
                         </div>
                         <div class="plan_header" id="t_damage_1">Tire Damage Description:</div>
@@ -187,8 +188,29 @@
                             <textarea id="tire_damage_desc_1" name="tire_damage_desc_1" rows="5" cols="28"
                                       tabindex="19">{TIRE_DAMAGE_DESC_1}</textarea>
                         </div>
-                        <input type="hidden" name="coverage_1" value="{TIRE_COVERAGE_1}">
+
+                        <h4 class="sub-section">Credit Information</h4>
+                        <div class="group">
+                            <div class="plan_header" id="t_percent_1">
+                                Tire 1 Credit Percentage:
+                            </div>
+                            <div class="plan_field">
+                                <div id="percent_1"></div>
+                                <input type='hidden' name="percent_1" value="">
+                            </div>
+                        </div>
+                        <div class="group">
+                            <div class="plan_header" id="t_coverage_1">
+                                Tire 1 Credit Amount Due:
+                            </div>
+                            <div class="plan_field">
+                                <div id="coverage_1">{TIRE_COVERAGE_1}</div>
+                                <input type="hidden" name="coverage_1" value="{TIRE_COVERAGE_1}">
+                            </div>
+                        </div>
                     </div>
+
+
                     <div class="plan_submit">
                         <input id="add_tire" type="button" value="Add A Second Tire" name="add_tire"><input
                             id="remove_tire" type="button" value="Remove Second Tire" name="remove_tire">
@@ -228,7 +250,7 @@
 
                         <div class="plan_header" id="t_price_2">Original Tire Price</div>
                         <div class="plan_field">
-                            <input id="original_tire_price_2" name="original_tire_price_2" size="30" type="text"
+                            <input class="formcheck tdepth_2" id="original_tire_price_2" name="original_tire_price_2" size="30" type="text"
                                    tabindex="26" value="{ORIGINAL_TIRE_PRICE_2}">
                         </div>
                         <div class="plan_header" id="t_price_2">Replacement Tire Price</div>
@@ -239,12 +261,12 @@
 
                         <div class="plan_header" id="o_t_depth_2">Original Tread Depth</div>
                         <div class="plan_field">
-                            <input id="original_tread_depth_2" name="original_tread_depth_2" size="2" MAXLENGTH="2"
+                            <input id="original_tread_depth_2" class="formcheck tdepth_2" name="original_tread_depth_2" size="2" MAXLENGTH="2"
                                    type="text" tabindex="28" value="{ORIGINAL_TREAD_DEPTH_2}">/32
                         </div>
                         <div class="plan_header" id="r_t_depth_2">Remaining Tread Depth</div>
                         <div class="plan_field">
-                            <input id="remaining_tread_depth_2" name="remaining_tread_depth_2" size="2" MAXLENGTH="2"
+                            <input id="remaining_tread_depth_2" class="formcheck tdepth_2" name="remaining_tread_depth_2" size="2" MAXLENGTH="2"
                                    type="text" tabindex="29" value="{REMAINING_TREAD_DEPTH_2}">/32
                         </div>
                         <div class="plan_header" id="t_damage_2">Tire Damage Description:</div>
@@ -252,7 +274,25 @@
                             <textarea id="tire_damage_desc_2" name="tire_damage_desc_2" rows="5" cols="28"
                                       tabindex="30">{TIRE_DAMAGE_DESC_2}</textarea>
                         </div>
-                        <input type="hidden" name="coverage_2" value="{TIRE_COVERAGE_2}">
+                        <h4 class="sub-section">Credit Information</h4>
+                        <div class="group">
+                            <div class="plan_header" id="t_percent_2">
+                                Tire 2 Credit Percentage:
+                            </div>
+                            <div class="plan_field">
+                                <div id="percent_2"></div>
+                                <input type='hidden' name="percent_2" value="">
+                            </div>
+                        </div>
+                        <div class="group">
+                            <div class="plan_header" id="t_coverage_2">
+                                Tire 2 Credit Amount Due:
+                            </div>
+                            <div class="plan_field">
+                                <div id="coverage_2">{TIRE_COVERAGE_2}</div>
+                                <input type='hidden' name="coverage_2" value="{TIRE_COVERAGE_2}">
+                            </div>
+                        </div>
                     </div>
                 </div>
 
