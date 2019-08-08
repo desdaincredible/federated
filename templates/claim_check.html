@@ -61,7 +61,8 @@
                         <div class="plan_field">{TIRE_DAMAGE_DESC_1}</div>
                         <div class="plan_header">Coverage</div>
                         <div class="plan_field">{TIRE_COVERAGE_1}</div>
-
+                        <div class="plan_header">Coverage Percentage</div>
+                        <div class="plan_field">{TIRE_PERCENTAGE_1}</div>
                     </div>
                     <div style="display: {TIRE_2}">
                         <div class="plan_line"><p><b>Tire 2</b></p></div>
@@ -89,6 +90,8 @@
                         <div class="plan_field">{TIRE_DAMAGE_DESC_2}</div>
                         <div class="plan_header">Coverage</div>
                         <div class="plan_field">{TIRE_COVERAGE_2}</div>
+                        <div class="plan_header">Coverage Percentage</div>
+                        <div class="plan_field">{TIRE_PERCENTAGE_2}</div>
                     </div>
 
 
@@ -195,8 +198,8 @@
                                 Tire 1 Credit Percentage:
                             </div>
                             <div class="plan_field">
-                                <div id="percent_1"></div>
-                                <input type='hidden' name="percent_1" value="">
+                                <div id="percent_1">{TIRE_PERCENTAGE_1}</div>
+                                <input type='hidden' name="percent_1" value="{TIRE_PERCENTAGE_1}">
                             </div>
                         </div>
                         <div class="group">
@@ -280,8 +283,8 @@
                                 Tire 2 Credit Percentage:
                             </div>
                             <div class="plan_field">
-                                <div id="percent_2"></div>
-                                <input type='hidden' name="percent_2" value="">
+                                <div id="percent_2">{TIRE_PERCENTAGE_2}</div>
+                                <input type='hidden' name="percent_2" value="{TIRE_PERCENTAGE_2}">
                             </div>
                         </div>
                         <div class="group">

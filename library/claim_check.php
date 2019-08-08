@@ -47,6 +47,7 @@ if (!empty($valid_claim)) {
     $content['REMAINING_TREAD_DEPTH_1'] = (empty($_POST['remaining_tread_depth_1'])) ? '' : $_POST['remaining_tread_depth_1'];
     $content['TIRE_DAMAGE_DESC_1'] = (empty($_POST['tire_damage_desc_1'])) ? '' : $_POST['tire_damage_desc_1'];
     $content['TIRE_COVERAGE_1'] = (empty($_POST['coverage_1'])) ? '' : $_POST['coverage_1'];
+    $content['TIRE_PERCENTAGE_1'] = (empty($_POST['percent_1'])) ? '' : $_POST['percent_1'];
 
     $content['TIRE_2'] = 'none';
     $content['SECOND_TIRE'] = '';
@@ -63,6 +64,7 @@ if (!empty($valid_claim)) {
     $content['REMAINING_TREAD_DEPTH_2'] = (empty($_POST['remaining_tread_depth_2'])) ? '' : $_POST['remaining_tread_depth_2'];
     $content['TIRE_DAMAGE_DESC_2'] = (empty($_POST['tire_damage_desc_2'])) ? '' : $_POST['tire_damage_desc_2'];
     $content['TIRE_COVERAGE_2'] = (empty($_POST['coverage_2'])) ? '' : $_POST['coverage_2'];
+    $content['TIRE_PERCENTAGE_2'] = (empty($_POST['percent_2'])) ? '' : $_POST['percent_2'];
 
     if (!empty($content['TIRE_MAKE_1'])) {
         $content['TIRE_1'] = 'block';
