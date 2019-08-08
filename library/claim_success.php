@@ -43,6 +43,8 @@ if (!empty($valid_claim)) {
 
     $claim_content = $model->getClaimContent($db, $_SESSION['claim_id'], $_SESSION['demo']);
     $content['PAGE_TITLE'] = 'Claim Success!';
+
+	$content['CLAIM_ID'] = (empty($claim_content[0]['claim_id'])) ? '' : $claim_content[0]['claim_id'];
     $content['DEALER_NAME'] = (empty($claim_content[0]['business_name'])) ? '' : $claim_content[0]['business_name'];
     $content['DEALER_PHONE'] = (empty($claim_content[0]['business_phone'])) ? '' : $claim_content[0]['business_phone'];
 
