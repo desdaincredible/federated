@@ -24,8 +24,8 @@ if (!empty($valid_dealer)) {
         header("Location: error?eid=4");
     }
 
-    $claim_content = array_change_key_case($claim_content, CASE_UPPER);
-    $content = array_merge($claim_content, $content);
+//    $claim_content = array_change_key_case($claim_content, CASE_UPPER);
+//    $content = array_merge($claim_content, $content);
     $content['PAGE_TITLE'] = 'Tire Claim';
 
 	$content['CLAIM_ID'] = (empty($claim_content[0]['claim_id'])) ? '' : $claim_content[0]['claim_id'];
