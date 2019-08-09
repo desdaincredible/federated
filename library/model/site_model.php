@@ -655,6 +655,18 @@ class model
         return $phone;
 
     }
+    function getDealer($dealer_id, $db)
+    {
+        $dealer_info = '';
+        $sql = "SELECT * FROM dealer_registration WHERE dealer_id=:dealer_id";
 
-
+        $db->query($sql);
+        $db->bind(':dealer_id', $dealer_id, PDO::PARAM_INT);
+        $dealer_info = $db->single();
+        if ($dealer_info !== FALSE) {
+            return $dealer_info;
+        } else {
+            header("Location: error?eid=3");
+        }
+    }
 }

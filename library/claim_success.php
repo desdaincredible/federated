@@ -30,7 +30,7 @@ $valid_claim = '';
 
 /* Check to see if they are already logged in */
 
-if ($_SESSION['valid_claim'] == 1) {
+if (isset($_SESSION['valid_claim']) && $_SESSION['valid_claim'] == 1) {
     $valid_claim = 1;
 }
 
@@ -141,27 +141,52 @@ if (!empty($valid_claim)) {
         $html_part = str_replace('{' . strtoupper($key) . '}', $value, $html_part);
     }
 
-//    $email->setFrom('donotreply@ntwclaims.net', 'NTW Website');
-//    $email->addAddress('claims@ntwclaims.net', 'NTW Claims');
-//    $email->addCC('zola@zolaweb.com', 'Zola');
-//    $email->addCC('dmcneese@abswarranty.net', 'Daniel McNeese');
-//    $email->addCC('gpetty@abswarranty.net', 'Gennica Petty');
-//
-//
-//    $email->Subject = 'New NTW claim';
-//    $email->isHTML(TRUE);
-//    $email->Body = $html_part;
-//    $email->AltBody = $text_part;
-//
-//    $email->addAttachment($claim_content[0]['orig_inv_filename'], str_replace('invoices/', '', $claim_content[0]['orig_inv_filename']));
-//    $email->addAttachment($claim_content[0]['claim_inv_filename'], str_replace('invoices/', '', $claim_content[0]['claim_inv_filename']));
-//
-//
-//    /* Send the mail. */
-//    if (!$email->send()) {
-//        /* PHPMailer error. */
-//        echo $email->ErrorInfo;
-//    }
+    $email->setFrom('donotreply@ntwclaims.net', 'NTW Website');
+    $email->addAddress('claims@ntwclaims.net', 'NTW Claims');
+    $email->addCC('zola@zolaweb.com', 'Zola');
+    $email->addCC('dmcneese@abswarranty.net', 'Daniel McNeese');
+    $email->addCC('gpetty@abswarranty.net', 'Gennica Petty');
+
+
+    $email->Subject = 'New NTW claim';
+    $email->isHTML(TRUE);
+    $email->Body = $html_part;
+    $email->AltBody = $text_part;
+
+    $email->addAttachment($claim_content[0]['orig_inv_filename'], str_replace('invoices/', '', $claim_content[0]['orig_inv_filename']));
+    $email->addAttachment($claim_content[0]['claim_inv_filename'], str_replace('invoices/', '', $claim_content[0]['claim_inv_filename']));
+
+
+    /* Send the mail. */
+    if (!$email->send()) {
+        /* PHPMailer error. */
+        echo $email->ErrorInfo;
+    }
+
+    $dealer = $model->getDealer($_SESSION['dealer_id'], $db);
+    if ($dealer['business_email'] && count($dealer['business_email']) > 0) {
+        // send mail
+        $clientEmail->setFrom('donotreply@ntwclaims.net', 'NTW Website');
+        $clientEmail->addAddress($dealer['business_email'], 'NTW Claims');
+
+
+        $clientEmail->Subject = 'New NTW claim';
+        $clientEmail->isHTML(TRUE);
+        $clientEmail->Body = $html_part;
+        $clientEmail->AltBody = $text_part;
+
+        $clientEmail->addAttachment($claim_content[0]['orig_inv_filename'], str_replace('invoices/', '', $claim_content[0]['orig_inv_filename']));
+        $clientEmail->addAttachment($claim_content[0]['claim_inv_filename'], str_replace('invoices/', '', $claim_content[0]['claim_inv_filename']));
+
+
+        /* Send the mail. */
+        if (!$clientEmail->send()) {
+            /* PHPMailer error. */
+            echo $clientEmail->ErrorInfo;
+        }
+    }
+
+
 }
 $model->deleteSession($db);
 echo $finished_page;
