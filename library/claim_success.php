@@ -166,6 +166,7 @@ if (!empty($valid_claim)) {
     $dealer = $model->getDealer($_SESSION['dealer_id'], $db);
     if ($dealer['business_email'] && count($dealer['business_email']) > 0) {
         // send mail
+        $clientEmail = new PHPMailer(TRUE);
         $clientEmail->setFrom('donotreply@ntwclaims.net', 'NTW Website');
         $clientEmail->addAddress($dealer['business_email'], 'NTW Claims');
 
