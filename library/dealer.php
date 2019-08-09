@@ -15,7 +15,7 @@ foreach ($content as $key => $value) {
 }
 
 if (!empty($_SESSION['dealer_logged']) || !empty($_POST['username'])) {
-    if (!empty($_POST['username']) {
+    if (!empty($_POST['username'])) {
         $username = mysql_real_escape_string($_POST['username']);
         $password = mysql_real_escape_string($_POST['password']);
 
