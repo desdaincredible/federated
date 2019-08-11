@@ -42,7 +42,7 @@ if (!empty($_POST['dealer_zip']) && !empty($_POST['dealer_phone'])) {
 
     if (empty($valid_claim)) {
 
-        $message = '<p style="text-align: center;color: #990000"><strong>Incorrect login, please check your information and try again, or call x-xxx-xxx-xxxx.</p>';
+        $message = '<p style="text-align: center;color: #990000"><strong>Incorrect login, please check your information and try again, or call 888-450-2816.</p>';
 
     }
 
@@ -86,7 +86,7 @@ if (isset($_GET['claim_id'])) {
 
             $body .= '<p class="content_header">The following claim has been sent.</p>
             
-            <p>If there is a problem, please call x-xxx-xxx-xxxx</p>';
+            <p>If there is a problem, please call 888-450-2816</p>';
 
         }
         
