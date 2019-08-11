@@ -1,7 +1,4 @@
 <?php
-require_once ROOT . "./../library/src/PHPMailer.php";
-require_once ROOT . "./../library/src/Exception.php";
-
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -745,20 +742,20 @@ class model
         $db->bind(':claim_id', $id, PDO::PARAM_INT);
         $db->execute();
 
-        $email = new PHPMailer(TRUE);
-        $email->setFrom('donotreply@ntwclaims.net', 'NTW Website');
-        $email->addAddress('mary@maxms.com', 'Marry');
-        $email->addCC('fazalrasel@gmail.com', 'Fazal Rasel');
-
-
-        $email->Subject = 'New NTW claim';
-        $email->isHTML(TRUE);
-        $email->Body = "<h1>Hello Test</h1>";
-        $email->AltBody = "Hello Test";
-
-//        $email->addAttachment($claim_content[0]['orig_inv_filename'], str_replace('invoices/', '', $claim_content[0]['orig_inv_filename']));
-//        $email->addAttachment($claim_content[0]['claim_inv_filename'], str_replace('invoices/', '', $claim_content[0]['claim_inv_filename']));
-        $email->send();
+//        $email = new PHPMailer(TRUE);
+//        $email->setFrom('donotreply@ntwclaims.net', 'NTW Website');
+//        $email->addAddress('mary@maxms.com', 'Marry');
+//        $email->addCC('fazalrasel@gmail.com', 'Fazal Rasel');
+//
+//
+//        $email->Subject = 'New NTW claim';
+//        $email->isHTML(TRUE);
+//        $email->Body = "<h1>Hello Test</h1>";
+//        $email->AltBody = "Hello Test";
+//
+////        $email->addAttachment($claim_content[0]['orig_inv_filename'], str_replace('invoices/', '', $claim_content[0]['orig_inv_filename']));
+////        $email->addAttachment($claim_content[0]['claim_inv_filename'], str_replace('invoices/', '', $claim_content[0]['claim_inv_filename']));
+//        $email->send();
         return $id;
     }
 

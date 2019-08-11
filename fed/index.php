@@ -3,6 +3,12 @@ $site = 'fed';
 define("ROOT", __DIR__ . "/");
 set_include_path(ROOT . '/php');
 
+require_once('lib/db/config.php');
+require_once('lib/db/db.php');
+require_once 'lib/PHPMailer.php';
+require_once 'lib/Exception.php';
+require_once('model/site_model.php');
+
 $page_id = (!empty($_GET['id'])) ? $_GET['id'] : 'index';
 
 $page_id = preg_replace("/[^a-zA-Z0-9_]/", "", $page_id);

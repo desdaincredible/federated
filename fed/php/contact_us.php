@@ -1,9 +1,7 @@
 <?php
 session_start();
-require_once(ROOT . './../library/db/config.php');
-require_once(ROOT . './../library/db/db.php');
+
 $db = new Database();
-require_once('model/site_model.php');
 $model = new model($db);
 
 $message = '';
