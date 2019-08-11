@@ -29,7 +29,7 @@ $(document).ready(function () {
         $("#vehicle_model").autocomplete({
             minLength: 2,
             source: function (request, response) {
-                $.getJSON("/php/show_models.php", {
+                $.getJSON("show_models", {
                     "vmid": $("#vehicle_make").val(),
                     "term": $("#vehicle_model").val()
                 }, function (data) {
