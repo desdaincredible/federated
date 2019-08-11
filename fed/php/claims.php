@@ -37,6 +37,10 @@ $content['MESSAGE'] = $message;
 $claims = $model->getAllClaims($db);
 if (count($claims) > 0) {
     $tbody = '';
+    $dealer = $model->getDealerInfo($db, $_SESSION['dealer_id']);
+    foreach ($dealer as $k => $v) {
+        $content[$k] = $v;
+    }
     foreach ($claims as $claim) {
         $tr = "<tr>";
         $tr .= "<td><a href='./claim_by_id?claim_id=" . $claim['claim_id'] . "'>" . $claim['claim_id'] . "</a></td>";
