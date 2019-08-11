@@ -131,6 +131,10 @@ if (isset($_GET['claim_id'])) {
         $body .= "</div>";
 
         $content['BODY'] = $body;
+        $content['PAGE_TITLE'] = 'Labor Claims';
+        foreach($claim as $k => $v) {
+            $content[$k] = $v;
+        }
 
     } else {
 
@@ -139,9 +143,7 @@ if (isset($_GET['claim_id'])) {
     }
 
 } else {
-
-    $content['BODY'] = 'No Id Provided.';
-
+    $content['PAGE_TITLE'] = 'No Id Provided.';
 }
 
 
@@ -151,15 +153,9 @@ $footer = file_get_contents('templates/footer.html');
 $finished_page = $header . $body_copy . $footer;
 
 
-
-
-
 foreach ($content as $key => $value) {
-
     $finished_page = str_replace('{' . strtoupper($key) . '}', $value, $finished_page);
-
 }
-
 
 
 echo $finished_page;
