@@ -21,25 +21,58 @@ if (!empty($valid_claim)) {
     if ($id) {
 //        header("Location: /fed/claim_by_id?claim_id=$id&success");
         if ($_SERVER['HTTP_HOST'] == 'ntwclaimslocal.com') {
-            header("Location: /fed/claim_by_id?claim_id=$id&success");
+            header("Location: claim_by_id?claim_id=$id&success");
         } else {
-            $email = new PHPMailer(TRUE);
-            $email->setFrom('donotreply@ntwclaims.net', 'NTW Website');
-            $email->addAddress('rasel20062007@gmail.com', 'NTW Claims');
-//        $email->addCC('zola@zolaweb.com', 'Zola');
-//        $email->addCC('dmcneese@abswarranty.net', 'Daniel McNeese');
-//        $email->addCC('gpetty@abswarranty.net', 'Gennica Petty');
-
-            $email->Subject = 'New NTW claim';
-            $email->isHTML(TRUE);
-            $email->Body = "<h1>Hello Rasel</h1>";
-            $email->AltBody = "Hello Rasel";
-
-            if (!$email->send()) {
-                header("Location: /fed/claim_by_id?claim_id=$id&success");
-            } else {
-                echo "Unable to send Email. But Your data is saved on our database.";
+            $emailPageBody = file_get_contents('templates/claim_by_id.html');
+            $claim = $model->getClaimById($db, $id);
+            $emailContent['PAGE_TITLE'] = 'Labor Claims';
+            foreach ($claim as $k => $v) {
+                $emailContent[$k] = $v;
             }
+
+            foreach ($emailContent as $key => $value) {
+                $emailPageBody = str_replace('{' . strtoupper($key) . '}', $value, $emailPageBody);
+            }
+            // print_r($emailPageBody);
+            // print_r("Hello Rasel");
+            // die();
+
+            $email = new PHPMailer(TRUE);
+            $email->setFrom('donotreply@ntwclaims.net', 'Federated Labor Website');
+            $email->addAddress('claims@ntwclaims.net', 'New Labor Claims');
+            $email->addCC('zola@zolaweb.com', 'Zola');
+            $email->addCC('dmcneese@abswarranty.net', 'Daniel McNeese');
+            $email->addCC('gpetty@abswarranty.net', 'Gennica Petty');
+
+            $email->Subject = 'New Federated Labor Claim';
+            $email->isHTML(TRUE);
+            $email->Body = $emailPageBody;
+            $email->AltBody = $emailPageBody;
+//            $email->addAttachment($claim[0]['orig_inv_filename'], str_replace('invoices/', '', $claim[0]['orig_inv_filename']));
+//            $email->addAttachment($claim[0]['claim_inv_filename'], str_replace('invoices/', '', $claim[0]['claim_inv_filename']));
+
+            $email->send();
+
+            $dealer = $model->getDealerInfo($db, $_SESSION['dealer_id']);
+
+            if ($dealer['business_email'] && count($dealer['business_email']) > 0) {
+                // send mail
+                $dealerEmail = new PHPMailer(TRUE);
+                $dealerEmail->setFrom('donotreply@ntwclaims.net', 'Federated Labor Website');
+                $dealerEmail->addAddress('rasel20062007@gmail.com', 'Federated Labor Claims');
+
+                $dealerEmail->Subject = 'New Federated Labor Claim';
+                $dealerEmail->isHTML(TRUE);
+                $dealerEmail->Body = $emailPageBody;
+                $dealerEmail->AltBody = $emailPageBody;
+
+//                $dealerEmail->addAttachment($claim[0]['orig_inv_filename'], str_replace('invoices/', '', $claim[0]['orig_inv_filename']));
+//                $dealerEmail->addAttachment($claim[0]['claim_inv_filename'], str_replace('invoices/', '', $claim[0]['claim_inv_filename']));
+                $dealerEmail->send();
+            }
+
+            header("Location: claim_by_id?claim_id=$id&success");
+
         }
 
     } else {
@@ -47,8 +80,6 @@ if (!empty($valid_claim)) {
     }
     exit();
 } else {
-    header("Location: /fed");
+    header("Location: /");
     exit();
 }
-
-
