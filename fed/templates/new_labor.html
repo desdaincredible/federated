@@ -10,16 +10,16 @@
             <form name="new_labor" action="new_labor_save" method="post" enctype="multipart/form-data"
                   autocomplete="off">
                 <div class="plan_wrapper">
-                    <div class="plan_header">Original Invoice Number:</div>
+                    <div class="plan_header">Original Repair Invoice/Work Order Number:</div>
                     <div class="plan_field"><input required type="text" name="invoice_number" size="30"></div>
                     <div class="plan_header">Original Repair Date</div>
                     <div class="plan_field"><input required type="text" id="original_repair_date"
                                                    name="original_repair_date"
                                                    size="30">
                     </div>
-                    <div class="plan_header">Sub Invoice Number:</div>
+                    <div class="plan_header">Warranty Repair Invoice/Work Order Number:</div>
                     <div class="plan_field"><input required type="text" name="sub_invoice_number" size="30"></div>
-                    <div class="plan_header">Sub Repair Date</div>
+                    <div class="plan_header">Warranty Repair Date</div>
                     <div class="plan_field"><input required type="text" id="sub_repair_date" name="sub_repair_date"
                                                    size="30"
                     ></div>
@@ -47,8 +47,7 @@
                     ></div>
                     <div class="plan_header">Customer Email</div>
                     <div class="plan_field">
-                        <input required
-                               type="email" id="customer_email" name="customer_email"
+                        <input type="email" id="customer_email" name="customer_email"
                                size="30"
                         ></div>
 
@@ -76,22 +75,20 @@
                     <div class="plan_field">
                         <select id="repair_code" name="repair_code">{REPAIR_CODES}</select>
                     </div>
-
-                    <div class="plan_header">Original Labor Price</div>
-                    <div class="plan_field"><input required type="text" id="original_labor_price"
-                                                   name="original_labor_price"
-                                                   size="30"
-                    ></div>
-
                     <div class="plan_header">Labor Per Hour</div>
                     <div class="plan_field"><input required type="text" id="labor_price" name="labor_price"
                                                    size="30"
                     ></div>
-                    <div class="plan_header">Original Labor Hours</div>
+                    <div class="plan_header">Original Repair Labor Hours</div>
                     <div class="plan_field"><input required type="text" id="labor_hour" name="labor_hour"
                                                    size="30"
                     ></div>
-                    <div class="plan_header">Sub Labor Price</div>
+                    <div class="plan_header">Original Repair Labor Charge</div>
+                    <div class="plan_field"><input required type="text" id="original_labor_price"
+                                                   name="original_labor_price"
+                                                   size="30"
+                    ></div>
+                    <div class="plan_header">Warranty Repair Labor Charge</div>
                     <div class="plan_field"><input required type="text" id="sub_labor_price" name="sub_labor_price"
                                                    size="30"
                     ></div>
@@ -102,16 +99,16 @@
                     </div>
 
                     <div class="plan_submit"><p><b>Files</b></p></div>
-                    <div class="plan_header">Original Invoice</div>
-                    <div class="plan_field"><input required type="file" id="orig_inv_filename" name="orig_inv_filename"
-                                                   size="30"
-                    ></div>
+                    <div class="plan_header">Original Repair Invoice/Work Order:</div>
+                    <div class="plan_field"><input required type="file" id="orig_inv_filename" name="orig_inv_filename" size="30"></div>
+                    <div class="plan_header">Original Parts Purchase Receipt:</div>
+                    <div class="plan_field"><input required type="file" id="orig_parts_filename" name="orig_parts_filename" size="30"></div>
 
-                    <div class="plan_header">Claim Invoice</div>
-                    <div class="plan_field"><input required type="file" id="claim_inv_filename"
-                                                   name="claim_inv_filename"
-                                                   size="30"
-                    ></div>
+                    <div class="plan_header">Warranty Repair Invoice/Work Order:</div>
+                    <div class="plan_field"><input required type="file" id="claim_inv_filename" name="claim_inv_filename" size="30"></div>
+                    
+                    <div class="plan_header">Warranty Parts Purchase Receipt:</div>
+                    <div class="plan_field"><input required type="file" id="claim_parts_filename" name="claim_parts_filename" size="30"></div>
 
                     <div class="plan_submit"><input required class="btn btn-success btn-block" type="submit"
                                                     value="Submit" name="send_message"></div>
