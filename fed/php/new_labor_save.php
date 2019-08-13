@@ -40,9 +40,9 @@ if (!empty($valid_claim)) {
             $email = new PHPMailer(TRUE);
             $email->setFrom('donotreply@ntwclaims.net', 'Federated Labor Website');
             $email->addAddress('claims@ntwclaims.net', 'New Labor Claims');
-            $email->addCC('zola@zolaweb.com', 'Zola');
-            $email->addCC('dmcneese@abswarranty.net', 'Daniel McNeese');
-            $email->addCC('gpetty@abswarranty.net', 'Gennica Petty');
+            $email->addCC('dhillis@abswarranty.net', 'Destiny Hillis');
+            // $email->addCC('dmcneese@abswarranty.net', 'Daniel McNeese');
+            // $email->addCC('gpetty@abswarranty.net', 'Gennica Petty');
 
             $email->Subject = 'New Federated Labor Claim';
             $email->isHTML(TRUE);
@@ -59,7 +59,7 @@ if (!empty($valid_claim)) {
                 // send mail
                 $dealerEmail = new PHPMailer(TRUE);
                 $dealerEmail->setFrom('donotreply@ntwclaims.net', 'Federated Labor Website');
-                $dealerEmail->addAddress('rasel20062007@gmail.com', 'Federated Labor Claims');
+                $dealerEmail->addAddress('dhillis@abswarranty.net', 'Federated Labor Claims');
 
                 $dealerEmail->Subject = 'New Federated Labor Claim';
                 $dealerEmail->isHTML(TRUE);

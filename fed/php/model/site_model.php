@@ -307,15 +307,15 @@ class model
         /* Prepare for content display */
         $count = count($repairCodes);
 //        print_r($repairCodes);
-        $makes = '';
+        $repairs = '';
         if ($count > 0) {
             foreach ($repairCodes as $code) {
                 $string = $code['repair_code'] . ', ' . $code['repair_type'] . ', ' . $code['component'];
-                $makes .= '<option value="' . $code['repair_code'] . '">' . $string . '</option>' . "\n";
+                $repairs .= '<option value="' . $code['repair_code'] . '">' . $string . '</option>' . "\n";
             }
         }
 
-        return $makes;
+        return $repairs;
     }
 
     function getModels(&$db, $term, $make_id)
@@ -363,6 +363,18 @@ class model
         }
         return $json;
 
+    }
+
+    function yearDropdown()
+    {
+        $currently_selected = date('Y'); 
+        $earliest_year = 1900; 
+        $latest_year = date('Y'); 
+    
+        foreach ( range( $latest_year, $earliest_year ) as $i ) {
+          $json = '[{"value"'.$i.'"'.($i === $currently_selected ? ' selected="selected"' : '').'>'.$i.']';
+        }
+        return $json;
     }
 
     function getTireMakes(&$db, $term)
