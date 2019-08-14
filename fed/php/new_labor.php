@@ -44,6 +44,7 @@ $content['MESSAGE'] = $message;
 $content['VEHICLE_MAKES'] = $model->getMakesDropdown($db);
 $content['REPAIR_CODES'] = $model->getRepairCodesDropdown($db);
 $content['VEHICLE_YEARS'] = $model->yearDropdown();
+$content['DATE_PICKER'] = $model->datepicker();
 $footer = file_get_contents('templates/footer.html');
 $finished_page = $header . $body_copy . $footer;
 

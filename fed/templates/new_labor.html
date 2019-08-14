@@ -13,6 +13,27 @@
                     <div class="plan_header">Original Repair Invoice/Work Order Number:</div>
                     <div class="plan_field"><input required type="text" name="invoice_number" size="30"></div>
                     <div class="plan_header">Original Repair Date</div>
+
+                        <div class="container, plan_field">
+                            <div class="row">
+                                <div class='col-sm-6'>
+                                    <div class="form-group">
+                                        <div class='input-group date' id='datetimepicker1'>
+                                            <input required type='text' class="form-control" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <script type="text/javascript">
+                                    $(function () {
+                                        $('#datetimepicker1').datetimepicker();
+                                    });
+                                </script>
+                            </div>
+                        </div>
+
                     <div class="plan_field"><input required type="text" id="original_repair_date" name="original_repair_date" size="30">
                     </div>
                     <div class="plan_header">Warranty Repair Invoice/Work Order Number:</div>

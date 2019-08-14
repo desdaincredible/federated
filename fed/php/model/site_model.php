@@ -377,6 +377,10 @@ class model
         return $json;
     }
 
+    function datePicker() {
+        $( "#datepicker" ).datepicker();
+    }
+
     function getTireMakes(&$db, $term)
     {
         $sql = "SELECT * FROM tire_makes WHERE make_name LIKE :term";
